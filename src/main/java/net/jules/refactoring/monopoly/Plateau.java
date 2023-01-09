@@ -62,16 +62,14 @@ public class Plateau {
             cases.get(i).setSuivante(cases.get(i + 1));
         }
         cases.get(cases.size() - 1).setSuivante(cases.get(0));
-}
-
+    }
 
     private void genererListeCaseSansProprietaire(ArrayList<Case> cases){
         for (Case c:cases){
-            if (c.getClass() == CaseConstructible.class){
+            if (c instanceof CaseConstructible){
                 caseSansProprietaire.add((CaseConstructible) c);
             }
         }
-
     }
 
     public ArrayList<CaseConstructible> getCaseAchetable(){

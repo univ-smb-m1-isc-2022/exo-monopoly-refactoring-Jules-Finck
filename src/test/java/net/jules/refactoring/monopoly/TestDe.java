@@ -1,6 +1,4 @@
 package net.jules.refactoring.monopoly;
-
-import net.jules.refactoring.monopoly.De;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
