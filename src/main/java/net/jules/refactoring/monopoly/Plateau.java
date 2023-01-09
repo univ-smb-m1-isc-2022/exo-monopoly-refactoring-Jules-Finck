@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class Plateau {
 
     public Case depart;
+    public Case impot;
+    public Case prison;
+    public Case luxe;
+    public Case allerenprison;
     private ArrayList<CaseConstructible> caseSansProprietaire = new ArrayList<>();
 
     public Plateau(){
@@ -13,9 +17,6 @@ public class Plateau {
         creerLesCasesSuivantes(cases);
         genererListeCaseSansProprietaire(cases);
     }
-
-
-
 
     private void creerLesCases(ArrayList<Case> cases){
         depart = new CaseSpeciale("Depart");
@@ -37,19 +38,23 @@ public class Plateau {
         cases.add(new CaseConstructible("Place de la Bourse", 220, 22,"j"));
         cases.add(new CaseConstructible("Faubourg St Honore", 220, 20,"j"));
         cases.add(new CaseConstructible("Rue de la Fayette", 240, 24,"j"));
-        cases.add( new CaseConstructible("Avenue Foch", 260, 26,"w"));
-        cases.add( new CaseConstructible("Avenue de Breteuil", 260, 26,"w"));
-        cases.add( new CaseConstructible("Boulevard des Capucines", 280, 28,"w"));
-        cases.add( new CaseConstructible("Avenue des Champs Elysees", 300, 30,"g"));
-        cases.add( new CaseConstructible("Rue de la paix",350,35,"g"));
-        cases.add( new CaseSpeciale("Impot sur le Revenu"));
-        cases.add( new CaseSpeciale("Taxe de Luxe"));
-        cases.add( new CaseSpeciale("Prison"));
-        cases.add( new CaseSpeciale("Aller en Prison"));
-        cases.add( new CaseConstructible("Gare De Lyon",120,25,"gare"));
-        cases.add( new CaseConstructible("Gare Mont-Parnasse",120,25,"gare"));
-        cases.add( new CaseConstructible("Gare Du Nord",120,25,"gare"));
-        cases.add( new CaseConstructible("Gare Saint-Lazar",120,25,"gare"));
+        cases.add(new CaseConstructible("Avenue Foch", 260, 26,"w"));
+        cases.add(new CaseConstructible("Avenue de Breteuil", 260, 26,"w"));
+        cases.add(new CaseConstructible("Boulevard des Capucines", 280, 28,"w"));
+        cases.add(new CaseConstructible("Avenue des Champs Elysees", 300, 30,"g"));
+        cases.add(new CaseConstructible("Rue de la paix",350,35,"g"));
+        impot = new CaseSpeciale("Impot sur le Revenu");
+        cases.add(impot);
+        luxe = new CaseSpeciale("Taxe de Luxe");
+        cases.add(luxe);
+        prison = new CaseSpeciale("Prison");
+        cases.add(prison);
+        allerenprison = new CaseSpeciale("Aller en Prison");
+        cases.add(allerenprison);
+        cases.add(new CaseConstructible("Gare De Lyon",120,25,"gare"));
+        cases.add(new CaseConstructible("Gare Mont-Parnasse",120,25,"gare"));
+        cases.add(new CaseConstructible("Gare Du Nord",120,25,"gare"));
+        cases.add(new CaseConstructible("Gare Saint-Lazar",120,25,"gare"));
     }
 
     private void creerLesCasesSuivantes(ArrayList<Case> cases){
