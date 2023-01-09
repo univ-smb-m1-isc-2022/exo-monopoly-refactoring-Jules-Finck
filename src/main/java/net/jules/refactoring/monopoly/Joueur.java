@@ -1,4 +1,4 @@
-package net.guillaume.teaching.refactoring.monopoly;
+package net.jules.refactoring.monopoly;
 
 import java.util.ArrayList;
 
