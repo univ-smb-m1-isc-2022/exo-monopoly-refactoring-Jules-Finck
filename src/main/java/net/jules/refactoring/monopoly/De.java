@@ -4,7 +4,6 @@ public class De {
 
     private int valeurFace;
 
-
     public De() {
         valeurFace = 1;
     }
