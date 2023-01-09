@@ -8,7 +8,6 @@ public class JeuDeMonopoly {
     private final ArrayList<Joueur> joueurs = new ArrayList<>();
     private final Combinaison combinaison;
     private boolean stop = false;
-    private ArrayList<CaseConstructible> caseLibreAAchat = new ArrayList<>();
     private Plateau plateau ;
 
 
@@ -21,7 +20,6 @@ public class JeuDeMonopoly {
         joueurs.add(new Joueur("Mathieu","Il", plateau.depart));
         joueurs.add(new Joueur("Cedric","Il", plateau.depart));
         combinaison = new Combinaison();
-        caseLibreAAchat=  new ArrayList<>(plateau.getCaseAchetable());
     }
 
 
@@ -82,8 +80,8 @@ public class JeuDeMonopoly {
     private void jouerLeTotalDe(Joueur unjoueur, int total) {
         unjoueur.joue(total, plateau.depart, plateau.impot, plateau.luxe, plateau.allerenprison, plateau.prison);   // tester si cas construtible
         if(unjoueur.getPosition() instanceof  CaseConstructible) {
-        unjoueur.acheterCase((CaseConstructible) unjoueur.getPosition(),caseLibreAAchat);
-        unjoueur.payerLoyer((CaseConstructible) unjoueur.getPosition(),caseLibreAAchat, joueurs);
+        unjoueur.acheterCase((CaseConstructible) unjoueur.getPosition());
+        unjoueur.payerLoyer((CaseConstructible) unjoueur.getPosition(), joueurs);
         }
         stop = unjoueur.finDePartie();
         // avancer sur le plateau et faire action

@@ -20,4 +20,8 @@ public class Quartier {
     public String getCouleur() {
         return couleur;
     }
+
+    public int getSize() {
+        return caseConstructibles.size();
+    }
 }

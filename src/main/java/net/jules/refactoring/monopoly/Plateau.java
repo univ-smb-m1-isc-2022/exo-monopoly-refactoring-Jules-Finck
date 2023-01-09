@@ -9,13 +9,11 @@ public class Plateau {
     public Case prison;
     public Case luxe;
     public Case allerenprison;
-    private ArrayList<CaseConstructible> caseSansProprietaire = new ArrayList<>();
 
     public Plateau(){
         ArrayList<Case> cases = new ArrayList<>();
         creerLesCases(cases);
         creerLesCasesSuivantes(cases);
-        genererListeCaseSansProprietaire(cases);
     }
 
     private void creerLesCases(ArrayList<Case> cases){
@@ -71,17 +69,5 @@ public class Plateau {
             cases.get(i).setSuivante(cases.get(i + 1));
         }
         cases.get(cases.size() - 1).setSuivante(cases.get(0));
-    }
-
-    private void genererListeCaseSansProprietaire(ArrayList<Case> cases){
-        for (Case c:cases){
-            if (c instanceof CaseConstructible){
-                caseSansProprietaire.add((CaseConstructible) c);
-            }
-        }
-    }
-
-    public ArrayList<CaseConstructible> getCaseAchetable(){
-          return caseSansProprietaire;
     }
 }

@@ -176,10 +176,10 @@ public class Joueur implements Comparable {
         }
     }
 
-    public void acheterCase(CaseConstructible c,ArrayList<CaseConstructible> listecase) {
-        if (c.getCoutAchat() < argent && listecase.contains(c)) {  // si le joueur a argent et si la case est libre
+    public void acheterCase(CaseConstructible c) {
+        if (c.getCoutAchat() < argent && !c.hasProprietaire()) {  // si le joueur a argent et si la case est libre
             argent = argent - c.getCoutAchat();
-            listecase.remove(c);    // enleve la case de la liste des cases libres
+            c.setProprietaire(this);
             System.out.println(" * "+ nom + " achete " + c.getName() + " *");
             augmenterCardinalite(c.getCouleur());
             casespossedes.add(c); // ajoute a la liste des cases possedees par le joueur
@@ -187,8 +187,8 @@ public class Joueur implements Comparable {
     }
 
 
-    public void payerLoyer(CaseConstructible c,ArrayList<CaseConstructible> listecase, ArrayList<Joueur> j) {
-        if (!listecase.contains(c) && !casespossedes.contains(c)) {   //si la case a un propritaire et que ce n est pas le joueur
+    public void payerLoyer(CaseConstructible c, ArrayList<Joueur> j) {
+        if (c.hasProprietaire() && !casespossedes.contains(c)) {   //si la case a un propritaire et que ce n est pas le joueur
             if(c.getCouleur()=="gare") {   // traitement du cas particulier de la gare
                 int montantloyer=0;
                 int nombregare =0;
@@ -215,7 +215,7 @@ public class Joueur implements Comparable {
             else {  // traitement si pas une gare
                 for (Joueur aJ : j) {
                     if (aJ.casespossedes.contains(c)) {  // cherche le joueur qui est proprietaire de la case
-                        if (aJ.getNombrePropriete(c.getCouleur())==c.nombreProprieteDeLaCouleur(c.getCouleur())){  // si le propriatire a toutes les propriétés
+                        if (aJ.getNombrePropriete(c.getCouleur())==c.nombreProprieteDeLaCouleur()){  // si le propriatire a toutes les propriétés
                             argent = argent - c.getLoyer()*2;
                             if (argent>=0){ // si  peut payer le loyer
                                 aJ.argent += c.getLoyer()*2;

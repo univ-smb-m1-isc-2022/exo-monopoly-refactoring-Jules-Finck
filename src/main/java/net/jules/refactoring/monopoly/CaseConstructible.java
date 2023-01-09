@@ -1,6 +1,7 @@
 package net.jules.refactoring.monopoly;
 
 public class CaseConstructible extends Case{
+    private Joueur proprietaire;
 
     private final int coutAchat;
     private final int loyer;
@@ -13,6 +14,7 @@ public class CaseConstructible extends Case{
         this.loyer = loyer;
         this.quartier=quartier;
         quartier.addCase(this);
+        proprietaire = null;
     }
 
 
@@ -28,25 +30,16 @@ public class CaseConstructible extends Case{
         return quartier.getCouleur();
     }
 
-    public int nombreProprieteDeLaCouleur(String couleur){
-        if (couleur=="v"){
-                return 2;}
-        else if (couleur=="b"){
-                return 3;}
-        else if (couleur== "p"){
-                return 3;}
-        else if (couleur=="o"){
-                return 3;}
-        else if (couleur=="r"){
-                return 3;}
-        else if (couleur=="j"){
-                return 3;}
-        else if (couleur=="w"){
-                return 3;}
-        else if (couleur=="g"){
-                return 2;}
-        else return 0;
+    public int nombreProprieteDeLaCouleur(){
+        return quartier.getSize();
      }
 
 
+    public boolean hasProprietaire() {
+        return proprietaire != null;
+    }
+
+    public void setProprietaire(Joueur joueur) {
+        proprietaire = joueur;
+    }
 }
