@@ -26,7 +26,6 @@ public class CaseConstructible extends Case{
         return couleur ;
     }
 
-
     public int nombreProprieteDeLaCouleur(String couleur){
         if (couleur=="v"){
                 return 2;}
