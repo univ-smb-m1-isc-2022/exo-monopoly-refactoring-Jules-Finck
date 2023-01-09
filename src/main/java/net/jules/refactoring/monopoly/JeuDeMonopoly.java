@@ -6,7 +6,6 @@ import java.util.Collections;
 public class JeuDeMonopoly {
 
     private final ArrayList<Joueur> joueurs = new ArrayList<>();
-    private final Combinaison combinaison;
     private boolean stop = false;
     private Plateau plateau ;
 
@@ -19,7 +18,6 @@ public class JeuDeMonopoly {
         joueurs.add(new Joueur("Loubna","Elle", plateau.depart));
         joueurs.add(new Joueur("Mathieu","Il", plateau.depart));
         joueurs.add(new Joueur("Cedric","Il", plateau.depart));
-        combinaison = new Combinaison();
     }
 
 
@@ -36,15 +34,13 @@ public class JeuDeMonopoly {
 
     private void jouerUnTour(Joueur unjoueur) {
         if (!stop) { //verifier avant le joueur suivant si la partie est arrete
-            int[] valeurLancer = unjoueur.lancer();
-            int total = combinaison.faitLaSomme(valeurLancer);
-            boolean verifdouble = combinaison.estUnDouble(valeurLancer);
-            unjoueur.monLance(total);  // plus logique de l'afficher avant son eventuel deplacement, achat ou paiment de loyer, prison j'ai donc decomposé mon ousuisje initial
+            Goblelet lancer = unjoueur.lancer();
+            unjoueur.monLance(lancer.getTotal());  // plus logique de l'afficher avant son eventuel deplacement, achat ou paiment de loyer, prison j'ai donc decomposé mon ousuisje initial
     // SI DOUBLE
-            if (verifdouble) {
+            if (lancer.isDouble()) {
                 unjoueur.aFaitUnDouble(plateau.prison);  // incremente double met rejouer a true, le met en prison , condition liberable
                 if (!unjoueur.estEnPrison()) {        // si pas ne prison ->  jouer  son resultat
-                    jouerLeTotalDe(unjoueur, total);
+                    jouerLeTotalDe(unjoueur, lancer.getTotal());
                     unjoueur.ouSuisJe();
                 }
                 if (unjoueur.rejoue())    // Si  il a un double il va rejouer  condition nece car appel recursif
@@ -55,7 +51,7 @@ public class JeuDeMonopoly {
                 }
                 if (unjoueur.getLiberable()) {   // libere le joueur en prison qui a fait un double
                     unjoueur.liberationDouble();
-                    jouerLeTotalDe(unjoueur, total);
+                    jouerLeTotalDe(unjoueur, lancer.getTotal());
                     unjoueur.ouSuisJe();
                 }
             }
@@ -63,7 +59,7 @@ public class JeuDeMonopoly {
             else {
                 unjoueur.aPasFaitUnDouble();   // donc on remet compteur double à 0
                 if (!unjoueur.estEnPrison()) {
-                    jouerLeTotalDe(unjoueur, total);   // il joue son resultat
+                    jouerLeTotalDe(unjoueur, lancer.getTotal());   // il joue son resultat
                 }
                 unjoueur.ouSuisJe();
             }
