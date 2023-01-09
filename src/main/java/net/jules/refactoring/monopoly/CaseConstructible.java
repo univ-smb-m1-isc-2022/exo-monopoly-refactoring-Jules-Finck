@@ -39,6 +39,10 @@ public class CaseConstructible extends Case{
         return proprietaire != null;
     }
 
+    public Joueur getProprietaire(){
+        return proprietaire;
+    }
+
     public void setProprietaire(Joueur joueur) {
         proprietaire = joueur;
     }
