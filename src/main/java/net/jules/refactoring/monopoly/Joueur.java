@@ -101,9 +101,7 @@ public class Joueur implements Comparable {
     else {
             System.out.println("Sa position est " + position.getName() + ". " +getSexeJ() +" n'a plus d'argent.");
         }
-
     }
-
 
     public void monLance(int total) {
         System.out.println( nom + " fait un total pour son lancer de des de " + total +".");
@@ -131,7 +129,6 @@ public class Joueur implements Comparable {
         tourPrison = 0;
         liberable = false;
     }
-
 
     public void aPasFaitUnDouble() {
         nombreDeDouble = 0; // remettre compteur double à 0
@@ -245,15 +242,11 @@ public class Joueur implements Comparable {
             }
 
         }
-
     }
 
     private void faireFailliteACauseLoyer(){
         System.out.print(getNomJ() +" ne peut pas payer le loyer en entier. Il fait faillite.");
     }
-
-
-
      private void   augmenterCardinalite(String couleur){   // augmente de un le nombre de propriete d une couleur
         switch (couleur){
          case "v" :
@@ -286,7 +279,6 @@ public class Joueur implements Comparable {
         }
     }
 
-
     private int   getNombrePropriete(String couleur){  // renvoye le nombre de propriete d un certain couleur
         if (couleur=="v"){
             return v;}
@@ -309,9 +301,6 @@ public class Joueur implements Comparable {
         else return 0;
     }
 
-
-
-
     public int compareTo(Object other) {    // sert au classement fianl des joueurs
         int nombre1 = ((Joueur) other).getArgent();
         int nombre2 = this.getArgent();
@@ -319,7 +308,6 @@ public class Joueur implements Comparable {
         else if (nombre1 == nombre2) return 0;
         else return 1;
     }
-
 
     public void afficherLesProprietes(){ // affiche les proprietes
         int compteur=0; // sert pour la mise en forme avec les virgules
@@ -335,7 +323,4 @@ public class Joueur implements Comparable {
     }
         System.out.println(".") ;
     }
-
-
 }
-

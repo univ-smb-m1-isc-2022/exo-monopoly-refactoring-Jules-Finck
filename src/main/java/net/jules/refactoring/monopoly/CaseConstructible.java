@@ -4,13 +4,15 @@ public class CaseConstructible extends Case{
 
     private final int coutAchat;
     private final int loyer;
-    private final String couleur;
 
-    public CaseConstructible(String name, int coutAchat, int loyer, String couleur) {
+    private final Quartier quartier;
+
+    public CaseConstructible(String name, int coutAchat, int loyer, Quartier quartier) {
         super(name);
         this.coutAchat = coutAchat;
         this.loyer = loyer;
-        this.couleur=couleur;
+        this.quartier=quartier;
+        quartier.addCase(this);
     }
 
 
@@ -23,7 +25,7 @@ public class CaseConstructible extends Case{
     }
 
     public String getCouleur(){
-        return couleur ;
+        return quartier.getCouleur();
     }
 
     public int nombreProprieteDeLaCouleur(String couleur){

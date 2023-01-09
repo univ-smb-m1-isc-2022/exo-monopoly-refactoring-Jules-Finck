@@ -1,7 +1,6 @@
 package net.jules.refactoring.monopoly;
 
 public abstract class Case {
-
     private final String name;
     private Case suivante;
 
